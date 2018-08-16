@@ -1,0 +1,35 @@
+App\Entity\ListAddressProvince:
+    type: entity
+    table: list_address_province
+    indexes:
+        ccaa:
+            columns:
+                - ccaa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        province:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        ccaa:
+            targetEntity: ListAddressCcaa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ccaa:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
